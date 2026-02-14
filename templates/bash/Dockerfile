@@ -1,5 +1,3 @@
-FROM debian:bookworm-slim
-
-VOLUME .
+FROM debian/bookworm-slim:latest
 
 CMD ["/bin/bash"]

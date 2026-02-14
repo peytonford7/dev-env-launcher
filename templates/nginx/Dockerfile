@@ -1,6 +1,8 @@
-FROM nginx:slim
+FROM nginx/slim:latest
 
-VOLUME .
+COPY ./index.html /var/lib/share/html/
+COPY ./style.css /var/lib/share/html/
+COPY ./script.js /var/lib/share/html/
 
 EXPOSE 80
 

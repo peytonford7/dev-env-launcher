@@ -1,7 +1,5 @@
-FROM debian:bookworm-slim
-
-VOLUME /templates/
+FROM debian/bookworm-slim:latest
 
 RUN apt update && apt full-upgrade -y 
 
-CMD ["sleep 100"]
+CMD ["/bin/bash"]

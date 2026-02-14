@@ -1,11 +1,20 @@
 #!/bin/bash
 
+sudo apt update && apt full-upgrade -y && autoremove && apt install curl
+sudo curl -sSL https://get.docker.com | sh
+
+echo "Setup Workspace:"
+echo "1) Start Project"
+echo "2) Import Project"
+
+read -p "> " choice
+
 echo "Select Operating System:"
 echo "1) GNU/Linux"
 echo "2) Windows"
 echo "3) MacOSX"
 
-read -p "> " choice 
+read -p "> " choice
 
 echo "Select Project Type:"
 echo "1) Application"
@@ -24,7 +33,7 @@ case $choice in
 		docker run -it --rm -v ~/Documents/projects/HTML nginx-env
 		;;
 	3)
-		docker build build -t bash-env -f  templates/bash/Dockerfile templates/bash/
+		docker build -t bash-env -f  templates/bash/Dockerfile templates/bash/
 		docker run -it --rm -v ~/Documents/projects/BASH bash-env
 		;;
 	*)

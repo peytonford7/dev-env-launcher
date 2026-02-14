@@ -1,8 +1,6 @@
-FROM debian:bookworm-slim
+FROM debian/bookworm-slim:latest
 
 RUN apt update && apt full-upgrade -y && apt install build-essential
-
-VOLUME .
 
 CMD ["/bin/bash"]
 
