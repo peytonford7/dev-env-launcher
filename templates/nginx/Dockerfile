@@ -1,13 +1,12 @@
-FROM nginx/slim:latest
+FROM alpine@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659
 
-RUN mkdir /var/www && mkdir /var/www/html
+RUN apk update
+RUN apk add nginx
 
-ADD index.html /var/www/html
-ADD style.css /var/www/html
-ADD script.js /var/www/html
+COPY /templates/nginx/index.html /var/www/localhost/htdocs
+COPY /templates/nginx/styles.css /var/www/localhost/htdocs
+COPY /templates/nginx/script.js /var/www/localhost/htdocs
 
 EXPOSE 80
 
-RUN sudo apt update && apt full-upgrade -y
-
-CMD ["nginx", "-g", daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]

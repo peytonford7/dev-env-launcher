@@ -1,7 +1,4 @@
-#!/bin/bash
-
-sudo apt update && apt full-upgrade -y && autoremove && apt install curl
-sudo curl -sSL https://get.docker.com | sh
+#!/bin/sh
 
 echo "Setup Workspace:"
 echo "1) Start Project"
@@ -29,8 +26,8 @@ case $choice in
 		docker run -it --rm -v ~/Documents/projects/C++ cpp-env
 		;;
 	2)
-		docker build -t nginx-env -f templates/nginx/Dockerfile templates/nginx/
-		docker run -it --rm -v ~/Documents/projects/HTML nginx-env
+		docker build -t nginx-env -f templates/nginx/Dockerfile /templates/nginx/
+		docker run -it --rm -v ~/Documents/projects/HTML:~/Documents/projects/HTML --privileged nginx-env
 		;;
 	3)
 		docker build -t bash-env -f  templates/bash/Dockerfile templates/bash/
