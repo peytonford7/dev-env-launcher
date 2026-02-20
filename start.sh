@@ -27,7 +27,7 @@ case $choice in
 		;;
 	2)
 		docker build -t nginx-env -f templates/nginx/Dockerfile templates/nginx/
-		docker run -it --rm -p 80:80 --volumes-from dev-env --privileged nginx-env
+		docker run -t -d --rm -p 80:80 -v $HOME/Documents/projects/HTML/nginx:/app --privileged nginx-env
 		;;
 	3)
 		docker build -t bash-env -f  templates/bash/Dockerfile templates/bash/
