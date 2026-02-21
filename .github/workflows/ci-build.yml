@@ -1,10 +1,37 @@
-name: CI Build
-on: [push, pull_request]
+name: Build and Run Nginx Container
+
+on:
+  push:
+    branches: [ "main" ]
 
 jobs:
-  build:
+  build-and-run:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - run: ./configure
-      - run: make
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build nginx image
+        run: |
+          docker build -t nginx-env -f templates/nginx/Dockerfile templates/nginx/
+
+      - name: Run nginx container
+        run: |
+          docker run -d \
+            --name nginx-test \
+            -p 80:80 \
+            --privileged \
+            nginx-env
+
+      - name: Wait for container
+        run: sleep 10
+
+      - name: Check running containers
+        run: docker ps
+
+      - name: Cleanup
+        if: always()
+        run: |
+          docker stop nginx-test || true
+          docker rm nginx-test || truename: CI Build
