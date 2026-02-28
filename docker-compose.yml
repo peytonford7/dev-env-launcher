@@ -1,0 +1,67 @@
+services:
+
+  # application
+  cpp:
+    build: ./templates/cpp
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  java:
+    build: ./templates/java
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  python:
+    build: ./templates/python
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  # website
+  django:
+    build: ./templates/django
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${PROJECT_PATH}:/app
+
+  nginx:
+    build: ./templates/html/nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ${PROJECT_PATH}:/app
+
+  apache:
+    build: ./templates/html/apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ${PROJECT_PATH}:/app
+
+  # scripting
+  bash:
+    build: ./templates/bash
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  json:
+    build: ./templates/python
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  xml:
+    build: ./templates/python
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
