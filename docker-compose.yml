@@ -29,6 +29,8 @@ services:
       - "8000:8000"
     volumes:
       - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
 
   nginx:
     build: ./templates/html/nginx
@@ -36,6 +38,8 @@ services:
       - "8080:80"
     volumes:
       - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
 
   apache:
     build: ./templates/html/apache
@@ -43,6 +47,8 @@ services:
       - "8080:80"
     volumes:
       - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
 
   # scripting
   bash:

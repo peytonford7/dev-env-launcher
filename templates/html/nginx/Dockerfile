@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "-c"]
 WORKDIR /app
 
 COPY default.conf /etc/nginx/http.d/default.conf
-COPY static/ /app/
+COPY src/ /app/
 
 EXPOSE 80
 

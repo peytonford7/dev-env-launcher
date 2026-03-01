@@ -1,9 +1,22 @@
 #!/bin/bash
 
 echo "Setup Workspace:"
-echo "1) Start New Project"
-echo "2) Import Existing Project"
+echo "1) New Project"
+echo "2) Import Project"
+echo "3) Clear Projects"
 read -p "> " mode
+
+if [ "$mode" = "3" ]; then
+    echo "Clear Projects? (y/n)"
+    read -p "> " confirm
+    if [ "$confirm" = "y" ]; then
+        rm -rf apps/*
+		docker ps -q | xargs -r docker stop >/dev/null 2>&1
+		docker system prune -af >/dev/null 2>&1
+        echo "Projects Cleared"
+    fi
+    exit 0
+fi
 
 echo "Select Operating System:"
 echo "1) GNU/Linux"
@@ -17,14 +30,6 @@ echo "2) Website"
 echo "3) Script"
 read -p "> " type
 
-if [ "$mode" = "1" ]; then
-    BASE_PATH="$(pwd)/templates"
-elif [ "$mode" = "2" ]; then
-    BASE_PATH="$(pwd)/../projects"
-else
-    exit 1
-fi
-
 case $type in
     1)
         echo "Select Application:"
@@ -33,9 +38,9 @@ case $type in
         echo "3) Python"
         read -p "> " choice
         case $choice in
-            1) PROJECT_TYPE="cpp"; PROJECT_NAME="cpp" ;;
-            2) PROJECT_TYPE="java"; PROJECT_NAME="java" ;;
-            3) PROJECT_TYPE="python"; PROJECT_NAME="python" ;;
+            1) PROJECT_DIR="cpp"; PROJECT_NAME="cpp" ;;
+            2) PROJECT_DIR="java"; PROJECT_NAME="java" ;;
+            3) PROJECT_DIR="python"; PROJECT_NAME="python" ;;
             *) exit 1 ;;
         esac
         ;;
@@ -46,9 +51,9 @@ case $type in
         echo "3) Nginx"
         read -p "> " choice
         case $choice in
-            1) PROJECT_TYPE="django"; PROJECT_NAME="django" ;;
-            2) PROJECT_TYPE="html/apache"; PROJECT_NAME="apache" ;;
-            3) PROJECT_TYPE="html/nginx"; PROJECT_NAME="nginx" ;;
+            1) PROJECT_DIR="django"; PROJECT_NAME="django" ;;
+            2) PROJECT_DIR="html/apache"; PROJECT_NAME="apache" ;;
+            3) PROJECT_DIR="html/nginx"; PROJECT_NAME="nginx" ;;
             *) exit 1 ;;
         esac
         ;;
@@ -59,9 +64,9 @@ case $type in
         echo "3) XML"
         read -p "> " choice
         case $choice in
-            1) PROJECT_TYPE="bash"; PROJECT_NAME="bash" ;;
-            2) PROJECT_TYPE="json"; PROJECT_NAME="json" ;;
-            3) PROJECT_TYPE="xml"; PROJECT_NAME="xml" ;;
+            1) PROJECT_DIR="bash"; PROJECT_NAME="bash" ;;
+            2) PROJECT_DIR="json"; PROJECT_NAME="json" ;;
+            3) PROJECT_DIR="xml"; PROJECT_NAME="xml" ;;
             *) exit 1 ;;
         esac
         ;;
@@ -69,15 +74,39 @@ case $type in
 esac
 
 if [ "$mode" = "1" ]; then
-    PROJECT_PATH="$(pwd)/apps/$PROJECT_TYPE"
+    BASE_PATH="$(pwd)/templates"
+
+    PROJECT_PATH="$(pwd)/apps/$PROJECT_DIR"
     mkdir -p "$PROJECT_PATH"
-    cp -r "$BASE_PATH/$PROJECT_TYPE/static/"* "$PROJECT_PATH/"
+    cp -r "$BASE_PATH/$PROJECT_DIR/src/"* "$PROJECT_PATH/"
+
 elif [ "$mode" = "2" ]; then
-    if [[ "$PROJECT_TYPE" == html/* ]]; then
-        PROJECT_PATH="$(pwd)/../projects/$PROJECT_TYPE"
+    BASE_PATH="$(pwd)/../projects"
+
+    if [[ "$PROJECT_DIR" == html/* ]]; then
+        PROJECT_PATH="$(pwd)/../projects/$PROJECT_DIR"
     else
-        PROJECT_PATH="$BASE_PATH/$PROJECT_TYPE"
+        PROJECT_PATH="$BASE_PATH/$PROJECT_DIR"
     fi
+else
+    exit 1
 fi
 
-docker compose run --rm -v "$PROJECT_PATH:/app" $PROJECT_NAME
+export PROJECT_PATH
+
+echo "Project Details:"
+if [ "$mode" = "1" ]; then
+    echo "New Project"
+else
+    echo "Import Project"
+fi
+
+echo "Path: $PROJECT_PATH"
+
+echo "Building..."
+docker compose build "$PROJECT_NAME"
+
+echo "Deploying..."
+docker compose up -d "$PROJECT_NAME"
+
+docker compose exec -it "$PROJECT_NAME" bash
