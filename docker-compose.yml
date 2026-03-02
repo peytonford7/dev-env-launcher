@@ -1,6 +1,6 @@
 services:
 
-  # application
+  # Application
   cpp:
     build: ./templates/cpp
     volumes:
@@ -22,7 +22,7 @@ services:
     stdin_open: true
     tty: true
 
-  # website
+  # Website
   django:
     build: ./templates/django
     ports:
@@ -50,7 +50,7 @@ services:
     stdin_open: true
     tty: true
 
-  # scripting
+  # Scripting
   bash:
     build: ./templates/bash
     volumes:
