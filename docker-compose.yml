@@ -1,50 +1,62 @@
 services:
 
   # Application
+  # Object Oriented
+  c:
+    build: ./templates/application/objoriented/c/static
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+  gtk:
+    build: ./templates/application/objoriented/c/gtk
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  c#:
+    build: ./templates/application/objoriented/c#/static
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+  dotnet:
+    build: ./templates/application/objoriented/c#/dotnet
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
   cpp:
-    build: ./templates/cpp
+    build: ./templates/application/objoriented/cpp
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+  
+  go:
+    build: ./templates/application/objoriented/go
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
   java:
-    build: ./templates/java
+    build: ./templates/application/objoriented/java/static
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+  hadoop:
+    build: ./templates/application/objoriented/java/hadoop
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
-  python:
-    build: ./templates/python
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  # Website
-  django:
-    build: ./templates/django
-    ports:
-      - "8000:8000"
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  nginx:
-    build: ./templates/html/nginx
-    ports:
-      - "8080:80"
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  apache:
-    build: ./templates/html/apache
-    ports:
-      - "8080:80"
+  swift:
+    build: ./templates/application/objoriented/swift
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
@@ -52,21 +64,211 @@ services:
 
   # Scripting
   bash:
-    build: ./templates/bash
+    build: ./templates/application/scripting/bash
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
+  batch:
+    build: ./templates/application/scripting/batch
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  lua:
+    build: ./templates/application/scripting/lua
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  perl:
+    build: ./templates/application/scripting/perl
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  powershell:
+    build: ./templates/application/scripting/powershell
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  python:
+    build: ./templates/application/scripting/python
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  ruby:
+    build: ./templates/application/scripting/ruby
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  rust:
+    build: ./templates/application/scripting/rust
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  # Functional
+
   json:
-    build: ./templates/python
+    build: ./templates/application/functional/json
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
   xml:
-    build: ./templates/python
+    build: ./templates/application/functional/xml
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  yml:
+    build: ./templates/application/functional/yml
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  # Website
+  # Backend
+
+  aspdotnet:
+    build: ./templates/website/backend/aspdotnet
+    ports:
+      - "8080:80"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  django:
+    build: ./templates/website/backend/django
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  express:
+    build: ./templates/website/backend/express
+    ports:
+      - "3000:3000"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  fastapi:
+    build: ./templates/website/backend/fastapi
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  flask:
+    build: ./templates/website/backend/flask
+    ports:
+      - "5000:5000"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  rails:
+    build: ./templates/website/backend/rails
+    ports:
+      - "3000:3000"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  springboot:
+    build: ./templates/website/backend/springboot
+    ports:
+      - "8080:80"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  # Frontend
+
+  angular:
+    build: ./templates/website/frontend/angular
+    ports:
+      - "8080:80"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  nginx:
+    build: ./templates/website/frontend/html/nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+  apache:
+    build: ./templates/website/frontend/html/apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  react:
+    build: ./templates/website/frontend/react
+    ports:
+      - "3000:3000"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  vue:
+    build: ./templates/website/frontend/vue
+    ports:
+      - "3000:3000"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  # Fullstack
+
+  laravel:
+    build: ./templates/website/fullstack/laravel
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  nextjs:
+    build: ./templates/website/fullstack/nextjs
+    ports:
+      - "3000:3000"
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
