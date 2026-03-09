@@ -15,14 +15,14 @@ services:
     stdin_open: true
     tty: true
 
-  c#:
-    build: ./templates/application/objoriented/c#/static
+  csharp:
+    build: ./templates/application/objoriented/csharp/static
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
   dotnet:
-    build: ./templates/application/objoriented/c#/dotnet
+    build: ./templates/application/objoriented/csharp/dotnet
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
