@@ -11,8 +11,8 @@ if [ "$mode" = "3" ]; then
     read -p "> " confirm
     if [ "$confirm" = "y" ]; then
         rm -rf apps/*
-		docker ps -q | xargs -r docker stop >/dev/null 2>&1
-		docker system prune -af >/dev/null 2>&1
+        docker ps -q | xargs -r docker stop >/dev/null 2>&1
+        docker system prune -af >/dev/null 2>&1
         echo "Projects Cleared"
     fi
     exit 0
@@ -49,17 +49,15 @@ case $type in
                 echo "6) Swift"
                 read -p "> " choice
                 case $choice in
-                    1) 
+                    1)
                         PROJECT_NAME="c"; PROJECT_DIR="$PROJECT_DIR/c"
                         echo "Select C Environment:"
                         echo "1) Default C"
                         echo "2) GTK"
                         read -p "> " choice
                         case $choice in
-                            1) 
-                                PROJECT_NAME="c"; PROJECT_DIR="$PROJECT_DIR/c/static" ;;
-                            2)
-                                PROJECT_NAME="gtk"; PROJECT_DIR="$PROJECT_DIR/c/gtk" ;;
+                            1) PROJECT_NAME="c"; PROJECT_DIR="$PROJECT_DIR/c/static" ;;
+                            2) PROJECT_NAME="gtk"; PROJECT_DIR="$PROJECT_DIR/c/gtk" ;;
                             *) exit 1 ;;
                         esac
                         ;;
@@ -70,37 +68,30 @@ case $type in
                         echo "2) .NET"
                         read -p "> " choice
                         case $choice in
-                            1) 
-                                PROJECT_NAME="csharp"; PROJECT_DIR="$PROJECT_DIR/csharp/static" ;;
-                            2)
-                                PROJECT_NAME="dotnet"; PROJECT_DIR="$PROJECT_DIR/csharp/dotnet" ;;
+                            1) PROJECT_NAME="csharp"; PROJECT_DIR="$PROJECT_DIR/csharp/static" ;;
+                            2) PROJECT_NAME="dotnet"; PROJECT_DIR="$PROJECT_DIR/csharp/dotnet" ;;
                             *) exit 1 ;;
                         esac
                         ;;
-                    3) 
-                        PROJECT_NAME="cpp"; PROJECT_DIR="$PROJECT_DIR/cpp" ;;
-                    4)
-                        PROJECT_NAME="go"; PROJECT_DIR="$PROJECT_DIR/go" ;;
-                    5) 
+                    3) PROJECT_NAME="cpp"; PROJECT_DIR="$PROJECT_DIR/cpp" ;;
+                    4) PROJECT_NAME="go"; PROJECT_DIR="$PROJECT_DIR/go" ;;
+                    5)
                         PROJECT_NAME="java"; PROJECT_DIR="$PROJECT_DIR/java"
                         echo "Select Java Environment:"
                         echo "1) Default Java"
                         echo "2) Hadoop"
                         read -p "> " choice
                         case $choice in
-                            1) 
-                                PROJECT_NAME="java"; PROJECT_DIR="$PROJECT_DIR/java/static" ;;
-                            2)
-                                PROJECT_NAME="hadoop"; PROJECT_DIR="$PROJECT_DIR/java/hadoop" ;;
+                            1) PROJECT_NAME="java"; PROJECT_DIR="$PROJECT_DIR/java/static" ;;
+                            2) PROJECT_NAME="hadoop"; PROJECT_DIR="$PROJECT_DIR/java/hadoop" ;;
                             *) exit 1 ;;
                         esac
                         ;;
-                    6)
-                        PROJECT_NAME="swift"; PROJECT_DIR="$PROJECT_DIR/swift" ;;
+                    6) PROJECT_NAME="swift"; PROJECT_DIR="$PROJECT_DIR/swift" ;;
                     *) exit 1 ;;
                 esac
                 ;;
-            2) 
+            2)
                 PROJECT_DIR="$PROJECT_DIR/scripting"
                 echo "Select Scripting Type:"
                 echo "1) Bash"
@@ -113,23 +104,15 @@ case $type in
                 echo "8) Rust"
                 read -p "> " choice
                 case $choice in
-                    1)
-                        PROJECT_NAME="bash"; PROJECT_DIR="$PROJECT_DIR/bash" ;;
-                    2) 
-                        PROJECT_NAME="batch"; PROJECT_DIR="$PROJECT_DIR/batch" ;;
-                    3)
-                        PROJECT_NAME="lua"; PROJECT_DIR="$PROJECT_DIR/lua" ;;
-                    4)
-                        PROJECT_NAME="perl"; PROJECT_DIR="$PROJECT_DIR/perl" ;;
-                    5) 
-                        PROJECT_NAME="powershell"; PROJECT_DIR="$PROJECT_DIR/powershell" ;;
-                    6) 
-                        PROJECT_NAME="python"; PROJECT_DIR="$PROJECT_DIR/python" ;;
-                    7) 
-                        PROJECT_NAME="ruby"; PROJECT_DIR="$PROJECT_DIR/ruby" ;;
-                    8)
-                        PROJECT_NAME="rust"; PROJECT_DIR="$PROJECT_DIR/rust" ;;
-                     *) exit 1 ;;
+                    1) PROJECT_NAME="bash"; PROJECT_DIR="$PROJECT_DIR/bash" ;;
+                    2) PROJECT_NAME="batch"; PROJECT_DIR="$PROJECT_DIR/batch" ;;
+                    3) PROJECT_NAME="lua"; PROJECT_DIR="$PROJECT_DIR/lua" ;;
+                    4) PROJECT_NAME="perl"; PROJECT_DIR="$PROJECT_DIR/perl" ;;
+                    5) PROJECT_NAME="powershell"; PROJECT_DIR="$PROJECT_DIR/powershell" ;;
+                    6) PROJECT_NAME="python"; PROJECT_DIR="$PROJECT_DIR/python" ;;
+                    7) PROJECT_NAME="ruby"; PROJECT_DIR="$PROJECT_DIR/ruby" ;;
+                    8) PROJECT_NAME="rust"; PROJECT_DIR="$PROJECT_DIR/rust" ;;
+                    *) exit 1 ;;
                 esac
                 ;;
             *) exit 1 ;;
@@ -169,35 +152,26 @@ case $type in
                 echo "7) Springboot"
                 read -p "> " choice
                 case $choice in
-                    1) 
-                        PROJECT_NAME="aspnet"; PROJECT_DIR="$PROJECT_DIR/aspnet" ;;
-                    2)
-                        PROJECT_NAME="django"; PROJECT_DIR="$PROJECT_DIR/django" ;;
-                    3)
-                        PROJECT_NAME="express"; PROJECT_DIR="$PROJECT_DIR/express" ;;
-                    4)
-                        PROJECT_NAME="fastapi"; PROJECT_DIR="$PROJECT_DIR/fastapi" ;;
-                    5)
-                        PROJECT_NAME="flask"; PROJECT_DIR="$PROJECT_DIR/flask" ;;
-                    6)
-                        PROJECT_NAME="rails"; PROJECT_DIR="$PROJECT_DIR/rails" ;;
-                    7)
-                        PROJECT_NAME="springboot"; PROJECT_DIR="$PROJECT_DIR/springboot" ;;
+                    1) PROJECT_NAME="aspnet"; PROJECT_DIR="$PROJECT_DIR/aspnet" ;;
+                    2) PROJECT_NAME="django"; PROJECT_DIR="$PROJECT_DIR/django" ;;
+                    3) PROJECT_NAME="express"; PROJECT_DIR="$PROJECT_DIR/express" ;;
+                    4) PROJECT_NAME="fastapi"; PROJECT_DIR="$PROJECT_DIR/fastapi" ;;
+                    5) PROJECT_NAME="flask"; PROJECT_DIR="$PROJECT_DIR/flask" ;;
+                    6) PROJECT_NAME="rails"; PROJECT_DIR="$PROJECT_DIR/rails" ;;
+                    7) PROJECT_NAME="springboot"; PROJECT_DIR="$PROJECT_DIR/springboot" ;;
                     *) exit 1 ;;
                 esac
                 ;;
             2)
                 PROJECT_DIR="$PROJECT_DIR/frontend"
                 echo "Select Frontend Framework:"
-                echo "1) Angular"
-                echo "3) HTML"
+                echo "1) HTML"
                 echo "2) React"
+                echo "3) Angular"
                 echo "4) Vue"
                 read -p "> " choice
                 case $choice in
                     1)
-                        PROJECT_NAME="angular"; PROJECT_DIR="$PROJECT_DIR/angular" ;;
-                    2)
                         PROJECT_NAME="html"; PROJECT_DIR="$PROJECT_DIR/html"
                         echo "Select HTML Environment:"
                         echo "1) Static HTML"
@@ -205,19 +179,15 @@ case $type in
                         echo "3) Nginx"
                         read -p "> " choice
                         case $choice in
-                            1)
-                                PROJECT_NAME="html"; PROJECT_DIR="$PROJECT_DIR/html/static" ;;
-                            2)
-                                PROJECT_NAME="apache"; PROJECT_DIR="$PROJECT_DIR/html/apache" ;;    
-                            3)
-                                PROJECT_NAME="nginx"; PROJECT_DIR="$PROJECT_DIR/html/nginx" ;;
+                            1) PROJECT_NAME="html"; PROJECT_DIR="$PROJECT_DIR/html/static" ;;
+                            2) PROJECT_NAME="apache"; PROJECT_DIR="$PROJECT_DIR/html/apache" ;;
+                            3) PROJECT_NAME="nginx"; PROJECT_DIR="$PROJECT_DIR/html/nginx" ;;
                             *) exit 1 ;;
                         esac
                         ;;
-                    3)
-                        PROJECT_NAME="react"; PROJECT_DIR="$PROJECT_DIR/react" ;;
-                    4)
-                        PROJECT_NAME="vue"; PROJECT_DIR="$PROJECT_DIR/vue" ;;
+                    2) PROJECT_NAME="react"; PROJECT_DIR="$PROJECT_DIR/react" ;;
+                    3) PROJECT_NAME="angular"; PROJECT_DIR="$PROJECT_DIR/angular" ;;
+                    4) PROJECT_NAME="vue"; PROJECT_DIR="$PROJECT_DIR/vue" ;;
                     *) exit 1 ;;
                 esac
                 ;;
@@ -228,10 +198,8 @@ case $type in
                 echo "2) Next.js"
                 read -p "> " choice
                 case $choice in
-                    1)
-                        PROJECT_NAME="laravel"; PROJECT_DIR="$PROJECT_DIR/laravel" ;;
-                    2)
-                        PROJECT_NAME="nextjs"; PROJECT_DIR="$PROJECT_DIR/nextjs" ;;
+                    1) PROJECT_NAME="laravel"; PROJECT_DIR="$PROJECT_DIR/laravel" ;;
+                    2) PROJECT_NAME="nextjs"; PROJECT_DIR="$PROJECT_DIR/nextjs" ;;
                     *) exit 1 ;;
                 esac
                 ;;
@@ -241,24 +209,35 @@ case $type in
     *) exit 1 ;;
 esac
 
+read -p "Enter Project Name: " PROJECT_ID
+
+mkdir -p "apps/$PROJECT_NAME"
+
+if [ -z "$PROJECT_ID" ]; then
+    PROJECT_ID=$(printf "%02d" $(( $(ls -1d apps/$PROJECT_NAME/* 2>/dev/null | wc -l) + 1 )))
+fi
+
+PROJECT_PATH="$(pwd)/apps/$PROJECT_NAME/$PROJECT_ID"
+mkdir -p "$PROJECT_PATH"
+
 if [ "$mode" = "1" ]; then
-    BASE_PATH="$(pwd)/templates"
 
-    PROJECT_PATH="$(pwd)/apps/$PROJECT_DIR"
-    mkdir -p "$PROJECT_PATH"
-    cp -r "$BASE_PATH/$PROJECT_DIR/src/"* "$PROJECT_PATH/"
+    IMPORT_PATH="templates/$PROJECT_DIR/src"
 
-elif [ "$mode" = "2" ]; then
-    BASE_PATH="$(pwd)/../projects"
-
-    if [ -d "$BASE_PATH/$PROJECT_NAME" ]; then
-        PROJECT_PATH="$BASE_PATH/$PROJECT_NAME"
+    if [ -d "$IMPORT_PATH" ]; then
+        cp -r "$IMPORT_PATH/"* "$PROJECT_PATH/" 2>/dev/null
     else
-        PROJECT_PATH="$BASE_PATH/$PROJECT_DIR"
+        echo "Error Creating Project Directory"
+        exit 1
     fi
+elif [ "$mode" = "2" ]; then
 
-    if [ ! -d "$PROJECT_PATH" ]; then
-        echo "Import Path Does Not Exist: $PROJECT_PATH"
+    read -p "Import Path (../projects/dir): " IMPORT_PATH
+
+    if [ -d "$IMPORT_PATH" ]; then
+        cp -r "$IMPORT_PATH/"* "$PROJECT_PATH/" 2>/dev/null
+    else
+        echo "Import Path Does Not Exist"
         exit 1
     fi
 else
@@ -267,19 +246,12 @@ fi
 
 export PROJECT_PATH
 
-echo "Project Details:"
-if [ "$mode" = "1" ]; then
-    echo "New Project"
-else
-    echo "Import Project"
-fi
-
 echo "Path: $PROJECT_PATH"
 
 echo "Building..."
 docker compose build "$PROJECT_NAME"
 
 echo "Deploying..."
-docker compose up -d --force-recreate "$PROJECT_NAME"
-
-docker compose exec -it "$PROJECT_NAME" bash
+docker compose run \
+--name "$PROJECT_NAME-$PROJECT_ID" \
+-it "$PROJECT_NAME"
