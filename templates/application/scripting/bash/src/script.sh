@@ -1,3 +1,2 @@
 #!/bin/bash
-
-echo "Put Your Bash Script Here!"
+echo "Put Your Script Here!"

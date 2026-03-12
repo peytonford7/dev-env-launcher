@@ -122,21 +122,21 @@ services:
   # Functional
 
   json:
-    build: ./templates/application/functional/json
+    build: ./templates/functional/json
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
   xml:
-    build: ./templates/application/functional/xml
+    build: ./templates/functional/xml
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
-  yml:
-    build: ./templates/application/functional/yml
+  yaml:
+    build: ./templates/functional/yaml
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
@@ -145,8 +145,8 @@ services:
   # Website
   # Backend
 
-  aspdotnet:
-    build: ./templates/website/backend/aspdotnet
+  aspnet:
+    build: ./templates/website/backend/aspnet
     ports:
       - "8080:80"
     volumes:
