@@ -1,15 +1,14 @@
-CXX = g++
-CXXFLAGS = -std=c++11
-TARGET = main
-SRC = main.cpp
+CXX = dotnet
+CXXFLAGS =
+TARGET = out/app.dll
 
 all: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
+$(TARGET):
+	$(CXX) build -c Release -o out
 
 clean:
-	rm -f $(TARGET)
+	rm -rf out
 
-run: $(TARGET)
-	./$(TARGET)
+run: all
+	dotnet out/app.dll

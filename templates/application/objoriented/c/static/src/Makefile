@@ -1,7 +1,7 @@
-CXX = g++
-CXXFLAGS = -std=c++11
+CXX = gcc
+CXXFLAGS = -std=c11
 TARGET = main
-SRC = main.cpp
+SRC = main.c
 
 all: $(TARGET)
 
