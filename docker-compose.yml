@@ -1,150 +1,149 @@
 services:
 
-  # Application
-  # Object Oriented
+  # Applications
+  # Compiled
   c:
-    build: ./templates/application/objoriented/c/static
+    build: ./templates/application/compiled/c/static
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
   gtk:
-    build: ./templates/application/objoriented/c/gtk
+    build: ./templates/application/compiled/c/gtk
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
   csharp:
-    build: ./templates/application/objoriented/csharp/static
+    build: ./templates/application/compiled/csharp/static
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
   dotnet:
-    build: ./templates/application/objoriented/csharp/dotnet
+    build: ./templates/application/compiled/csharp/dotnet
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
   cpp:
-    build: ./templates/application/objoriented/cpp
+    build: ./templates/application/compiled/cpp
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
   
   go:
-    build: ./templates/application/objoriented/go
+    build: ./templates/application/compiled/go
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
   java:
-    build: ./templates/application/objoriented/java/static
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-  hadoop:
-    build: ./templates/application/objoriented/java/hadoop
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  swift:
-    build: ./templates/application/objoriented/swift
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  # Scripting
-  bash:
-    build: ./templates/application/scripting/bash
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  batch:
-    build: ./templates/application/scripting/batch
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  lua:
-    build: ./templates/application/scripting/lua
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  perl:
-    build: ./templates/application/scripting/perl
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  powershell:
-    build: ./templates/application/scripting/powershell
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  python:
-    build: ./templates/application/scripting/python
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  ruby:
-    build: ./templates/application/scripting/ruby
+    build: ./templates/application/compiled/java/static
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
   rust:
-    build: ./templates/application/scripting/rust
+    build: ./templates/application/compiled/rust
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
-  # Functional
+  hadoop:
+    build: ./templates/application/compiled/java/hadoop
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
 
+  swift:
+    build: ./templates/application/compiled/swift
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  # Interpreted
+  bash:
+    build: ./templates/application/interpreted/bash
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  batch:
+    build: ./templates/application/interpreted/batch
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  lua:
+    build: ./templates/application/interpreted/lua
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  perl:
+    build: ./templates/application/interpreted/perl
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  powershell:
+    build: ./templates/application/interpreted/powershell
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  python:
+    build: ./templates/application/interpreted/python
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  ruby:
+    build: ./templates/application/interpreted/ruby
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  # Data Formats
   json:
-    build: ./templates/functional/json
+    build: ./templates/dataformat/json
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
   xml:
-    build: ./templates/functional/xml
+    build: ./templates/dataformat/xml
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
   yaml:
-    build: ./templates/functional/yaml
+    build: ./templates/dataformat/yaml
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
-  # Website
+  # Websites
   # Backend
-
   aspnet:
     build: ./templates/website/backend/aspnet
     ports:

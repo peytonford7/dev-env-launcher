@@ -34,19 +34,21 @@ case $type in
     1)
         PROJECT_DIR="application"
         echo "Select Application Type:"
-        echo "1) Object Oriented"
-        echo "2) Scripting"
+        echo "1) Compiled"
+        echo "2) Interpreted"
         read -p "> " choice
         case $choice in
             1)
-                PROJECT_DIR="$PROJECT_DIR/objoriented"
+                PROJECT_DIR="$PROJECT_DIR/compiled"
                 echo "Select Application Type:"
                 echo "1) C"
                 echo "2) C#"
                 echo "3) C++"
                 echo "4) Go"
                 echo "5) Java"
-                echo "6) Swift"
+                echo "6) Rust"
+                echo "7) Swift"
+
                 read -p "> " choice
                 case $choice in
                     1)
@@ -87,13 +89,14 @@ case $type in
                             *) exit 1 ;;
                         esac
                         ;;
-                    6) PROJECT_NAME="swift"; PROJECT_DIR="$PROJECT_DIR/swift" ;;
+                    6) PROJECT_NAME="rust"; PROJECT_DIR="$PROJECT_DIR/rust" ;;
+                    7) PROJECT_NAME="swift"; PROJECT_DIR="$PROJECT_DIR/swift" ;;
                     *) exit 1 ;;
                 esac
                 ;;
             2)
-                PROJECT_DIR="$PROJECT_DIR/scripting"
-                echo "Select Scripting Type:"
+                PROJECT_DIR="$PROJECT_DIR/interpreted"
+                echo "Select Application Type:"
                 echo "1) Bash"
                 echo "2) Batch"
                 echo "3) Lua"
@@ -101,7 +104,6 @@ case $type in
                 echo "5) Powershell"
                 echo "6) Python"
                 echo "7) Ruby"
-                echo "8) Rust"
                 read -p "> " choice
                 case $choice in
                     1) PROJECT_NAME="bash"; PROJECT_DIR="$PROJECT_DIR/bash" ;;
@@ -111,7 +113,6 @@ case $type in
                     5) PROJECT_NAME="powershell"; PROJECT_DIR="$PROJECT_DIR/powershell" ;;
                     6) PROJECT_NAME="python"; PROJECT_DIR="$PROJECT_DIR/python" ;;
                     7) PROJECT_NAME="ruby"; PROJECT_DIR="$PROJECT_DIR/ruby" ;;
-                    8) PROJECT_NAME="rust"; PROJECT_DIR="$PROJECT_DIR/rust" ;;
                     *) exit 1 ;;
                 esac
                 ;;
@@ -119,7 +120,7 @@ case $type in
         esac
         ;;
     2)
-        PROJECT_DIR="functional"
+        PROJECT_DIR="dataformat"
         echo "Select Data Type:"
         echo "1) JSON"
         echo "2) XML"
