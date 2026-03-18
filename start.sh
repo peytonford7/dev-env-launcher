@@ -252,9 +252,9 @@ echo "Path: $PROJECT_PATH"
 echo "Name: $PROJECT_ID"
 
 echo "Building..."
-docker compose build "$PROJECT_NAME"
+docker compose build "$PROJECT_NAME" --quiet
 
 echo "Deploying..."
-docker compose run \
+docker compose run --quiet \
 --name "$PROJECT_NAME-$PROJECT_ID" \
--it "$PROJECT_NAME"
+-it "$PROJECT_NAME" \
