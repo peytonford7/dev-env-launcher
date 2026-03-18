@@ -39,6 +39,8 @@ services:
     build: ./templates/application/compiled/go
     volumes:
       - ${PROJECT_PATH}:/app
+    environment:
+      - PROJECT_ID=${PROJECT_ID}
     stdin_open: true
     tty: true
 
@@ -159,6 +161,8 @@ services:
       - "8000:8000"
     volumes:
       - ${PROJECT_PATH}:/app
+    environment:
+      - PROJECT_ID=${PROJECT_ID}
     stdin_open: true
     tty: true
 

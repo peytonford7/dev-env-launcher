@@ -4,7 +4,7 @@ WORKDIR /app
 CMD ["bash", "-c", "cd /app && \
 if [ -f Makefile ]; then \
   echo 'Makefile detected'; \
-  make; \
+  make -s; \
 fi && \
 if [ -f main.exe ]; then \
   echo 'Running main.exe'; \

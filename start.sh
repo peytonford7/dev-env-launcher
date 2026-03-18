@@ -10,7 +10,7 @@ if [ "$mode" = "3" ]; then
     echo "Clear Projects? (y/n)"
     read -p "> " confirm
     if [ "$confirm" = "y" ]; then
-        rm -rf apps/*
+        sudo rm -rf apps/*
         docker ps -q | xargs -r docker stop >/dev/null 2>&1
         docker system prune -af >/dev/null 2>&1
         echo "Projects Cleared"
@@ -219,10 +219,10 @@ if [ -z "$PROJECT_ID" ]; then
 fi
 
 PROJECT_PATH="$(pwd)/apps/$PROJECT_NAME/$PROJECT_ID"
-mkdir -p "$PROJECT_PATH"
 
 if [ "$mode" = "1" ]; then
 
+    mkdir -p "$PROJECT_PATH"
     IMPORT_PATH="templates/$PROJECT_DIR/src"
 
     if [ -d "$IMPORT_PATH" ]; then
@@ -236,7 +236,7 @@ elif [ "$mode" = "2" ]; then
     read -p "Import Path (../projects/dir): " IMPORT_PATH
 
     if [ -d "$IMPORT_PATH" ]; then
-        cp -r "$IMPORT_PATH/"* "$PROJECT_PATH/" 2>/dev/null
+        PROJECT_PATH="$IMPORT_PATH"
     else
         echo "Import Path Does Not Exist"
         exit 1
@@ -246,8 +246,10 @@ else
 fi
 
 export PROJECT_PATH
+export PROJECT_ID
 
 echo "Path: $PROJECT_PATH"
+echo "Name: $PROJECT_ID"
 
 echo "Building..."
 docker compose build "$PROJECT_NAME"

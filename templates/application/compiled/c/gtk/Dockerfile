@@ -4,7 +4,7 @@ WORKDIR /app
 CMD ["bash", "-c", "cd /app && \
 if [ -f Makefile ]; then \
   echo 'Makefile detected'; \
-  make CXXFLAGS=\"-std=c11 $(pkg-config --cflags --libs gtk+-3.0)\"; \
+  make -s CXXFLAGS=\"-std=c11 $(pkg-config --cflags --libs gtk+-3.0)\"; \
 fi && \
 if [ -f main ]; then \
   echo 'Running main'; \
