@@ -3,26 +3,20 @@ services:
   # Applications
   # Compiled
   c:
-    build: ./templates/application/compiled/c/static
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-  gtk:
-    build: ./templates/application/compiled/c/gtk
+    build: ./templates/application/compiled/c
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
 
   csharp:
-    build: ./templates/application/compiled/csharp/static
+    build: ./templates/application/compiled/csharp
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
     tty: true
   dotnet:
-    build: ./templates/application/compiled/csharp/dotnet
+    build: ./templates/application/compiled/dotnet
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
@@ -45,7 +39,7 @@ services:
     tty: true
 
   java:
-    build: ./templates/application/compiled/java/static
+    build: ./templates/application/compiled/java
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
@@ -53,13 +47,6 @@ services:
 
   rust:
     build: ./templates/application/compiled/rust
-    volumes:
-      - ${PROJECT_PATH}:/app
-    stdin_open: true
-    tty: true
-
-  hadoop:
-    build: ./templates/application/compiled/java/hadoop
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true
@@ -144,6 +131,20 @@ services:
     stdin_open: true
     tty: true
 
+  csv:
+    build: ./templates/dataformat/csv
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  rss:
+    build: ./templates/dataformat/rss
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
   # Websites
   # Backend
   aspnet:
@@ -211,6 +212,15 @@ services:
     stdin_open: true
     tty: true
 
+  rocket:
+    build: ./templates/website/backend/rocket
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
   # Frontend
 
   angular:
@@ -223,7 +233,7 @@ services:
     tty: true
 
   nginx:
-    build: ./templates/website/frontend/html/nginx
+    build: ./templates/website/frontend/nginx
     ports:
       - "8080:80"
     volumes:
@@ -231,7 +241,7 @@ services:
     stdin_open: true
     tty: true
   apache:
-    build: ./templates/website/frontend/html/apache
+    build: ./templates/website/frontend/apache
     ports:
       - "8080:80"
     volumes:
@@ -252,6 +262,15 @@ services:
     build: ./templates/website/frontend/vue
     ports:
       - "3000:3000"
+    volumes:
+      - ${PROJECT_PATH}:/app
+    stdin_open: true
+    tty: true
+
+  vite:
+    build: ./templates/website/frontend/vite
+    ports:
+      - "5173:5173"
     volumes:
       - ${PROJECT_PATH}:/app
     stdin_open: true

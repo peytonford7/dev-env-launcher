@@ -1,1 +1,1 @@
-print("Put Your Script Here!")
+print("Put Your Application Here!")

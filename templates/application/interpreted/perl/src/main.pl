@@ -1,2 +1,2 @@
 #!/usr/bin/perl
-print "Put Your Script Here!\n";
+print "Put Your Application Here!\n";

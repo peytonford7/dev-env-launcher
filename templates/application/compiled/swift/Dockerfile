@@ -1,13 +1,4 @@
-FROM swift:5.8
-RUN apt-get update && apt-get install -y build-essential bash
+FROM swift:5.10-jammy
+RUN apt-get update && apt-get install -y --no-install-recommends make && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
-CMD ["bash", "-c", "cd /app && \
-if [ -f Makefile ]; then \
-  echo 'Makefile detected'; \
-  make; \
-fi && \
-if [ -f main ]; then \
-  echo 'Running main'; \
-  ./main; \
-fi && \
-exec bash"]
+CMD ["sh", "-ec", "if [ -f Makefile ]; then make -s; fi; if [ -f main ]; then ./main; fi; exec sh"]

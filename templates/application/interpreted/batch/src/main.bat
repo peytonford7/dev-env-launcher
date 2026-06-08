@@ -1,2 +1,2 @@
 @echo off
-echo Put Your Script Here!
+echo Put Your Application Here!

@@ -1,1 +1,0 @@
-// NGINX JavaScript Goes Here

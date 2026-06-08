@@ -1,1 +1,0 @@
-// Apache JavaScript Goes Here

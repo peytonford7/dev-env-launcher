@@ -1,13 +1,4 @@
-FROM alpine@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659
-RUN apk add --no-cache build-base bash
+FROM alpine:latest
+RUN apk add --no-cache g++ make
 WORKDIR /app
-CMD ["bash", "-c", "cd /app && \
-if [ -f Makefile ]; then \
-  echo 'Makefile detected'; \
-  make -s; \
-fi && \
-if [ -f main ]; then \
-  echo 'Running main'; \
-  ./main; \
-fi && \
-exec bash"]
+CMD ["sh", "-ec", "if [ -f Makefile ]; then make -s; fi; if [ -f main ]; then ./main; fi; exec sh"]
